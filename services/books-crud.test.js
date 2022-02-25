@@ -27,10 +27,11 @@ describe('given a connection with a MongoDB', () => {
         });
 
         test('should get one item by id', async () => {
-            console.log(first_id.toString());
-            console.log(first_id.valueOf());
-            const result = await booksSrv.getBook(first_id.toString());
-            // first_id.valueOf())
+            const result = await booksSrv.getBook(
+                // first_id.toString(), (ambos valen)
+                first_id.valueOf(),
+                collection
+            );
             expect(result).toHaveProperty('_id');
             expect(result.title).toBe('Software');
         });
